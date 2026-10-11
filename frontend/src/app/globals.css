@@ -4,6 +4,47 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: var(--primary);
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes carousel-enter {
+  from { opacity: 0.35; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes feature-flow {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-50% - 0.5rem)); }
+}
+
+.animate-fade-up { animation: fade-up 700ms ease-out both; }
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-carousel-enter { animation: carousel-enter 700ms ease-out both; }
+.feature-track { animation: feature-flow 24s linear infinite; }
+.feature-track:hover { animation-play-state: paused; }
+.feature-card { width: min(76vw, 19rem); flex: 0 0 min(76vw, 19rem); }
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;

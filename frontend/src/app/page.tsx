@@ -1,56 +1,37 @@
-import { ArrowRight, Check, Clock3, MessageCircle, ShieldCheck, Video } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ModeToggle } from "@/components/mode-toggle";
+import { ArrowRight, Code2, FileText, MessageCircle, Play, ShieldCheck, Sparkles, Video } from "lucide-react";
+import { HeroCarousel } from "@/components/hero-carousel";
+import { Navbar } from "@/components/navbar";
+import { ScrollToTop } from "@/components/scroll-to-top";
 
 const features = [
-  { icon: Video, title: "Crystal-clear calls", text: "Meet face-to-face without the setup hassle." },
-  { icon: MessageCircle, title: "Chat alongside", text: "Keep messages and conversations in one place." },
-  { icon: ShieldCheck, title: "Private by design", text: "Your conversations stay focused on your team." },
+  { icon: Video, title: "Focused video rooms", text: "Meet your team in a calm, reliable space built for technical conversations." },
+  { icon: Code2, title: "Share code together", text: "Keep the code visible while you explain, review, and solve problems." },
+  { icon: MessageCircle, title: "Real-time discussion", text: "Chat beside the call so important context never gets lost." },
+  { icon: FileText, title: "Capture decisions", text: "Save notes, action items, and review outcomes before everyone leaves." },
 ];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6 lg:px-8">
-        <div className="flex items-center gap-3">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground"><Video className="h-5 w-5" /></span>
-          <span className="text-lg font-semibold tracking-tight">Meetly</span>
-        </div>
-        <div className="flex items-center gap-3">
-          <a className="hidden rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground sm:block" href="#features">Features</a>
-          <ModeToggle />
-          <Link href="/sign-in" className="rounded-full bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-sm transition-opacity hover:opacity-90">Sign in</Link>
-        </div>
-      </nav>
-
-      <section className="mx-auto grid w-full max-w-6xl items-center gap-14 px-6 pb-20 pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:pb-28 lg:pt-20">
-        <div>
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1.5 text-sm text-muted-foreground shadow-sm"><span className="h-2 w-2 rounded-full bg-primary" />Simple conversations, better connections</div>
-          <h1 className="max-w-2xl text-5xl font-semibold leading-[1.08] tracking-tight sm:text-6xl">Meet, talk, and stay connected.</h1>
-          <p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">A calm, focused space for video calls and real-time conversations with the people who matter.</p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link href="/sign-up" className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 font-medium text-primary-foreground shadow-sm transition-transform hover:-translate-y-0.5">Start a meeting <ArrowRight className="h-4 w-4" /></Link>
-            <button className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-border bg-card px-6 font-medium transition-colors hover:bg-accent"><Clock3 className="h-4 w-4 text-primary" />Schedule for later</button>
+    <main className="min-h-screen overflow-hidden bg-background text-foreground">
+      <Navbar />
+      <section className="relative isolate mx-auto min-h-[620px] w-full px-0 pb-20 pt-28 lg:pb-28 lg:pt-32">
+        <div className="absolute inset-x-0 bottom-20 top-28 overflow-hidden lg:top-32"><HeroCarousel /></div>
+        <div className="relative z-10 flex min-h-[620px] items-center justify-center px-6 py-20 text-center sm:px-12 lg:px-16">
+          <div className="animate-fade-up max-w-3xl text-white">
+            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/20 px-3.5 py-2 text-sm font-medium backdrop-blur"><Sparkles className="h-4 w-4 text-emerald-300" /> Built for better code reviews</div>
+            <h1 className="max-w-2xl text-5xl font-semibold leading-[1.04] tracking-[-0.04em] sm:text-6xl lg:text-7xl">Turn technical talk into <span className="text-emerald-300">clear progress.</span></h1>
+            <p className="mt-7 max-w-xl text-lg leading-8 text-white/75">Meetly brings video, shared code, chat, and notes into one focused workspace for developers and their teams.</p>
+            <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row"><Link href="/sign-up" className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-emerald-400 px-6 font-medium text-slate-950 shadow-lg shadow-emerald-400/20 transition-all hover:-translate-y-1 hover:bg-emerald-300"><ArrowRight className="h-4 w-4" /> Start for free</Link><a href="#workflow" className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/25 bg-black/20 px-6 font-medium backdrop-blur transition-colors hover:bg-black/35"><Play className="h-4 w-4 text-emerald-300" /> See how it works</a></div>
           </div>
-          <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground"><span className="inline-flex items-center gap-2"><Check className="h-4 w-4 text-primary" />No download required</span><span className="inline-flex items-center gap-2"><Check className="h-4 w-4 text-primary" />Works in your browser</span></div>
-        </div>
-
-        <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card p-4 shadow-xl shadow-primary/5 sm:p-6">
-          <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-primary/15 blur-3xl" />
-          <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-secondary p-5">
-            <Image src="/images/ocean-breeze-call-hero.png" alt="Abstract video call interface background" fill priority className="object-cover opacity-80" />
-            <div className="absolute inset-0 bg-gradient-to-t from-foreground/25 via-transparent to-background/10" />
-            <div className="relative z-10 flex h-full flex-col">
-            <div className="flex items-center justify-between text-xs font-medium text-muted-foreground"><span>Design team sync</span><span>10:24 AM</span></div>
-            <div className="mt-5 grid h-[calc(100%-2rem)] grid-cols-2 gap-3"><div className="flex items-end rounded-xl bg-primary/25 p-3"><span className="rounded-full bg-background/80 px-2.5 py-1 text-xs font-medium">You</span></div><div className="flex items-end rounded-xl bg-foreground/10 p-3"><span className="rounded-full bg-background/80 px-2.5 py-1 text-xs font-medium">Alex</span></div><div className="col-span-2 flex items-end rounded-xl bg-secondary p-3"><span className="rounded-full bg-background/80 px-2.5 py-1 text-xs font-medium">Sam is joining...</span></div></div>
-            </div>
-          </div>
-          <div className="flex items-center justify-between px-1 pt-5"><div><p className="text-sm font-medium">Ready when you are</p><p className="mt-1 text-xs text-muted-foreground">Your next call is one click away.</p></div><span className="h-3 w-3 rounded-full bg-primary shadow-[0_0_0_5px] shadow-primary/15" /></div>
         </div>
       </section>
-
-      <section id="features" className="border-t border-border bg-card/40"><div className="mx-auto grid w-full max-w-6xl gap-4 px-6 py-12 sm:grid-cols-3 lg:px-8">{features.map(({ icon: Icon, title, text }) => <div key={title} className="rounded-2xl border border-border bg-background p-5"><Icon className="h-5 w-5 text-primary" /><h2 className="mt-5 font-semibold">{title}</h2><p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p></div>)}</div></section>
+      <section id="features" className="border-y border-border bg-card/40"><div className="mx-auto max-w-7xl px-6 py-20 lg:px-8"><div className="max-w-2xl"><p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">Everything in one room</p><h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">Less tab switching. More solving.</h2><p className="mt-4 text-lg leading-8 text-muted-foreground">The essential tools for the moments when a message thread is not enough.</p></div><div className="feature-window mt-12 overflow-hidden border-x-2 border-primary py-6"><div className="feature-track flex w-max gap-4">{[...features, ...features].map(({ icon: Icon, title, text }, index) => <article key={title} className="feature-card group rounded-2xl border border-border bg-background p-6"><span className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary "><Icon className="h-5 w-5" /></span><span className="mt-6 block text-xs font-medium text-muted-foreground">0{index + 1}</span><h3 className="mt-2 font-semibold">{title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{text}</p></article>)}</div></div></div></section>
+      <section id="workflow" className="mx-auto grid w-full max-w-7xl items-center gap-14 px-6 py-24 lg:grid-cols-2 lg:px-8"><div><p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">A better review flow</p><h2 className="mt-4 max-w-xl text-4xl font-semibold tracking-tight sm:text-5xl">From “can you look at this?” to a clear next step.</h2><p className="mt-6 max-w-xl text-lg leading-8 text-muted-foreground">Create a room, bring the code into focus, talk through the tricky part, and leave with decisions everyone can act on.</p><div className="mt-8 space-y-5"><div className="flex gap-4"><span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">1</span><div><h3 className="font-semibold">Create a focused room</h3><p className="mt-1 text-sm text-muted-foreground">Invite your teammates with one shareable link.</p></div></div><div className="flex gap-4"><span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">2</span><div><h3 className="font-semibold">Review together</h3><p className="mt-1 text-sm text-muted-foreground">Use video, chat, and shared code without losing context.</p></div></div><div className="flex gap-4"><span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">3</span><div><h3 className="font-semibold">Save the outcome</h3><p className="mt-1 text-sm text-muted-foreground">Capture notes and action items before you wrap up.</p></div></div></div></div><div id="developers" className="relative flex items-center justify-center"><div className="animate-float absolute h-56 w-56 rounded-full bg-primary/20 blur-3xl" /><Image src="/svg/undraw_learning-to-sketch_ipnt.svg" alt="Developers collaborating" width={560} height={420} className="relative h-auto w-full max-w-lg" /></div></section>
+      <section className="mb-16 overflow-hidden bg-primary px-6 py-16 text-primary-foreground sm:px-12 lg:px-16"><div className="relative z-10 flex flex-col items-center justify-center gap-6 text-center"><div><h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">Make every technical conversation count.</h2></div><Link href="/sign-up" className="inline-flex h-10 max-h-10 shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-background px-4 py-2 text-sm font-medium text-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-lg">Create your room <ArrowRight className="h-4 w-4" /></Link></div></section>
+      <footer className="border-t border-border bg-card/30"><div className="mx-auto max-w-7xl px-6 py-14 lg:px-8"><div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr]"><div><div className="flex items-center gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground"><Video className="h-4 w-4" /></span><span className="text-lg font-semibold">Meetly</span></div><p className="mt-4 max-w-xs text-sm leading-6 text-muted-foreground">A focused workspace for developer calls, code reviews, and better technical conversations.</p><span className="mt-5 inline-flex items-center gap-2 text-sm text-muted-foreground"><ShieldCheck className="h-4 w-4 text-primary" /> Built for thoughtful teams</span></div><div><h3 className="text-sm font-semibold">Product</h3><div className="mt-4 grid gap-3 text-sm text-muted-foreground"><a href="#features" className="hover:text-foreground">Features</a><a href="#workflow" className="hover:text-foreground">How it works</a><Link href="/sign-up" className="hover:text-foreground">Get started</Link></div></div><div><h3 className="text-sm font-semibold">Developers</h3><div className="mt-4 grid gap-3 text-sm text-muted-foreground"><a href="#developers" className="hover:text-foreground">Code review</a><a href="#workflow" className="hover:text-foreground">Workflows</a><a href="mailto:hello@meetly.dev" className="hover:text-foreground">Contact us</a></div></div><div><h3 className="text-sm font-semibold">Account</h3><div className="mt-4 grid gap-3 text-sm text-muted-foreground"><Link href="/sign-in" className="hover:text-foreground">Sign in</Link><Link href="/sign-up" className="hover:text-foreground">Create account</Link><a href="#" className="hover:text-foreground">Privacy</a></div></div></div><div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between"><span>© 2026 Meetly. All rights reserved.</span><span>Video, code, and context in one place.</span></div></div></footer>
+      <ScrollToTop />
     </main>
   );
 }
