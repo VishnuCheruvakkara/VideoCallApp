@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Code2, FileText, MessageCircle, Play, ShieldCheck, Sparkles, Video } from "lucide-react";
 import { HeroCarousel } from "@/components/hero-carousel";
-import { Navbar } from "@/components/navbar";
 import { ScrollToTop } from "@/components/scroll-to-top";
 
 const features = [
@@ -15,7 +14,6 @@ const features = [
 export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
-      <Navbar />
       <section className="relative isolate mx-auto min-h-[620px] w-full px-0 pb-20 pt-28 lg:pb-28 lg:pt-32">
         <div className="absolute inset-x-0 bottom-20 top-28 overflow-hidden lg:top-32"><HeroCarousel /></div>
         <div className="relative z-10 flex min-h-[620px] items-center justify-center px-6 py-20 text-center sm:px-12 lg:px-16">
